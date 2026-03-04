@@ -1,0 +1,177 @@
+{
+  "identity": {
+    "name": "Urban Cuts",
+    "tone": "Street, Vibrant, High-Energy, Unapologetic",
+    "aesthetic": "Neo-Brutalist x Cyberpunk Street",
+    "target_audience": "Urban youth, hypebeasts, modern style seekers"
+  },
+  "typography": {
+    "font_family": {
+      "heading": "Anton, sans-serif",
+      "body": "Manrope, sans-serif",
+      "accent": "Permanent Marker, cursive"
+    },
+    "google_fonts_url": "https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;700&family=Permanent+Marker&display=swap",
+    "usage": {
+      "h1": "text-6xl md:text-8xl font-heading uppercase tracking-tighter leading-[0.9]",
+      "h2": "text-4xl md:text-6xl font-heading uppercase tracking-tight",
+      "h3": "text-2xl md:text-3xl font-heading uppercase",
+      "body": "text-base md:text-lg font-body text-gray-300",
+      "accent": "font-accent text-primary rotate-[-2deg]"
+    }
+  },
+  "colors": {
+    "palette": {
+      "background": "#050505",
+      "foreground": "#ffffff",
+      "primary": "#ccff00",
+      "secondary": "#ff0099",
+      "accent": "#00ffff",
+      "muted": "#1a1a1a",
+      "border": "#333333"
+    },
+    "tailwind_config_extension": {
+      "colors": {
+        "background": "#050505",
+        "foreground": "#ffffff",
+        "primary": {
+          "DEFAULT": "#ccff00",
+          "foreground": "#000000"
+        },
+        "secondary": {
+          "DEFAULT": "#ff0099",
+          "foreground": "#ffffff"
+        },
+        "accent": {
+          "DEFAULT": "#00ffff",
+          "foreground": "#000000"
+        },
+        "muted": {
+          "DEFAULT": "#1a1a1a",
+          "foreground": "#a3a3a3"
+        },
+        "card": {
+          "DEFAULT": "#0a0a0a",
+          "foreground": "#ffffff"
+        },
+        "border": "#333333"
+      },
+      "fontFamily": {
+        "heading": ["Anton", "sans-serif"],
+        "body": ["Manrope", "sans-serif"],
+        "accent": ["Permanent Marker", "cursive"]
+      }
+    }
+  },
+  "layout": {
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "grid_system": "grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8",
+    "spacing": {
+      "section_padding": "py-20 md:py-32",
+      "element_gap": "gap-6"
+    },
+    "border_radius": "rounded-none",
+    "glassmorphism": "bg-black/40 backdrop-blur-md border border-white/10"
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-black font-bold uppercase tracking-wider hover:bg-white transition-colors duration-300 px-8 py-4 rounded-none clip-path-slant",
+      "secondary": "border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300 px-8 py-4 rounded-none",
+      "ghost": "text-white hover:text-primary font-bold uppercase tracking-wider transition-colors"
+    },
+    "cards": {
+      "service": "group relative bg-muted p-8 border border-border hover:border-primary transition-colors duration-300 overflow-hidden",
+      "feature": "bg-black/50 border border-white/10 p-6 backdrop-blur-sm"
+    },
+    "inputs": {
+      "default": "bg-black border-2 border-border focus:border-primary text-white placeholder:text-gray-600 rounded-none p-4 outline-none transition-colors"
+    }
+  },
+  "motion": {
+    "library": "framer-motion",
+    "settings": {
+      "transition": {
+        "type": "spring",
+        "stiffness": 100,
+        "damping": 20
+      }
+    },
+    "animations": {
+      "fade_up": {
+        "initial": { "opacity": 0, "y": 50 },
+        "whileInView": { "opacity": 1, "y": 0 },
+        "viewport": { "once": true }
+      },
+      "stagger_container": {
+        "hidden": { "opacity": 0 },
+        "show": {
+          "opacity": 1,
+          "transition": {
+            "staggerChildren": 0.1
+          }
+        }
+      },
+      "text_reveal": {
+        "initial": { "y": "100%" },
+        "animate": { "y": "0%" },
+        "transition": { "duration": 0.5, "ease": "easeOut" }
+      }
+    }
+  },
+  "three_d": {
+    "library": "@react-three/fiber @react-three/drei three",
+    "scene_settings": {
+      "background": "transparent",
+      "lighting": "ambientLight intensity={0.5} + spotLight position={[10, 10, 10]} angle={0.15} penumbra={1}",
+      "camera": "perspective camera, fov 45"
+    },
+    "objects": [
+      {
+        "name": "Scissors",
+        "type": "model",
+        "fallback": "Cylinder geometry with metallic material, rotated to look like blades"
+      },
+      {
+        "name": "Razor",
+        "type": "model",
+        "fallback": "Box geometry, thin and sharp, silver chrome material"
+      },
+      {
+        "name": "Barber Chair",
+        "type": "model",
+        "fallback": "Group of boxes and cylinders, leather texture material"
+      }
+    ]
+  },
+  "assets": {
+    "images": {
+      "hero_bg": "https://images.unsplash.com/photo-1635619201449-284ad035c896?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "gallery": [
+        "https://images.unsplash.com/photo-1699641975121-5c3f55a553e5?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "https://images.unsplash.com/photo-1672274303996-ddfcb2a94250?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "https://images.unsplash.com/photo-1706769015484-248bd241945c?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "https://images.unsplash.com/photo-1768938896401-fe52fd18d3af?crop=entropy&cs=srgb&fm=jpg&q=85"
+      ],
+      "texture": "https://www.transparenttextures.com/patterns/stardust.png"
+    }
+  },
+  "instructions_to_main_agent": [
+    "INSTALL DEPENDENCIES FIRST: npm install framer-motion three @react-three/fiber @react-three/drei",
+    "Update tailwind.config.js with the colors and fonts provided in this JSON.",
+    "Add the Google Fonts link to the public/index.html head.",
+    "Create a 'components/3d' folder for Three.js components.",
+    "Use the 'Anton' font for all H1-H3 headings to get the street look.",
+    "Use 'Manrope' for body text.",
+    "Implement the 'Booking System' as a form that sends data to the FastAPI backend (mock the endpoint if backend is not ready).",
+    "The 3D section should be in the Hero. If actual 3D models (GLTF) are not available, create 'Abstract 3D Art' using basic shapes (Torus, Box, Sphere) with 'MeshStandardMaterial' (metalness=0.8, roughness=0.2) to simulate chrome tools.",
+    "Use the provided image URLs for the gallery section.",
+    "Ensure all interactive elements have hover states (scale up, color shift).",
+    "Add 'data-testid' to all buttons and inputs."
+  ],
+  "universal_guidelines": [
+    "Do not use gradients for text unless it is a very specific title effect.",
+    "Avoid rounded corners > 4px. Keep it sharp.",
+    "Use high contrast. Black background, Neon text.",
+    "Ensure the site is fully responsive."
+  ]
+}
