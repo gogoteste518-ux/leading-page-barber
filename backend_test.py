@@ -105,6 +105,16 @@ class EuclidesAPITester:
                 
                 if not missing_services:
                     print("✅ All expected services found")
+                    
+                    # Validate prices are in R$ 35-40 range
+                    valid_prices = ["R$ 35", "R$ 38", "R$ 40"]
+                    for service in response:
+                        if service['price'] in valid_prices:
+                            print(f"✅ {service['name']}: {service['price']} (valid price)")
+                        else:
+                            print(f"❌ {service['name']}: {service['price']} (invalid price - should be R$ 35-40)")
+                            return False, {}
+                    
                     # Validate service structure
                     for service in response:
                         required_fields = ['id', 'name', 'description', 'price', 'duration', 'icon']
