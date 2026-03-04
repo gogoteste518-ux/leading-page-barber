@@ -214,10 +214,10 @@ class EuclidesAPITester:
         return success, response
 
 def main():
-    print("🚀 Starting Urban Cuts API Tests")
+    print("🚀 Starting Euclides Cortes API Tests")
     print("=" * 50)
     
-    tester = UrbanCutsAPITester()
+    tester = EuclidesAPITester()
     
     # Run all tests
     tests = [
