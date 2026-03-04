@@ -1,12 +1,12 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
-from typing import List
+from pydantic import BaseModel, Field, ConfigDict, EmailStr
+from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
 
@@ -27,44 +27,132 @@ api_router = APIRouter(prefix="/api")
 
 
 # Define Models
-class StatusCheck(BaseModel):
-    model_config = ConfigDict(extra="ignore")  # Ignore MongoDB's _id field
+class Booking(BaseModel):
+    model_config = ConfigDict(extra="ignore")
     
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    client_name: str
-    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    name: str
+    email: EmailStr
+    phone: str
+    service: str
+    date: str
+    time: str
+    notes: Optional[str] = None
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    status: str = Field(default="pending")
 
-class StatusCheckCreate(BaseModel):
-    client_name: str
+class BookingCreate(BaseModel):
+    name: str
+    email: EmailStr
+    phone: str
+    service: str
+    date: str
+    time: str
+    notes: Optional[str] = None
+
+class Service(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str
+    name: str
+    description: str
+    price: str
+    duration: str
+    icon: str
 
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Urban Cuts API"}
 
-@api_router.post("/status", response_model=StatusCheck)
-async def create_status_check(input: StatusCheckCreate):
-    status_dict = input.model_dump()
-    status_obj = StatusCheck(**status_dict)
+@api_router.get("/services", response_model=List[Service])
+async def get_services():
+    services = [
+        {
+            "id": "1",
+            "name": "FADE STREET",
+            "description": "Corte degradê moderno com finalização detalhada. Estilo urbano e clean.",
+            "price": "R$ 60",
+            "duration": "45 min",
+            "icon": "scissors"
+        },
+        {
+            "id": "2",
+            "name": "BARBA KING",
+            "description": "Barba alinhada com navalha quente e hidratação profunda.",
+            "price": "R$ 40",
+            "duration": "30 min",
+            "icon": "razor"
+        },
+        {
+            "id": "3",
+            "name": "COMBO VIP",
+            "description": "Corte + Barba + Sobrancelha. Transformação completa.",
+            "price": "R$ 85",
+            "duration": "90 min",
+            "icon": "crown"
+        },
+        {
+            "id": "4",
+            "name": "PLATINADO",
+            "description": "Descoloração profissional + tonalização. Estilo único.",
+            "price": "R$ 120",
+            "duration": "120 min",
+            "icon": "star"
+        },
+        {
+            "id": "5",
+            "name": "RISCOS & ART",
+            "description": "Desenhos personalizados e riscos criativos no cabelo.",
+            "price": "R$ 30",
+            "duration": "20 min",
+            "icon": "pen"
+        },
+        {
+            "id": "6",
+            "name": "KIDS STYLE",
+            "description": "Corte especial para a garotada com muita paciência e estilo.",
+            "price": "R$ 45",
+            "duration": "30 min",
+            "icon": "child"
+        }
+    ]
+    return services
+
+@api_router.post("/bookings", response_model=Booking)
+async def create_booking(booking_data: BookingCreate):
+    booking_dict = booking_data.model_dump()
+    booking_obj = Booking(**booking_dict)
     
     # Convert to dict and serialize datetime to ISO string for MongoDB
-    doc = status_obj.model_dump()
-    doc['timestamp'] = doc['timestamp'].isoformat()
+    doc = booking_obj.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
     
-    _ = await db.status_checks.insert_one(doc)
-    return status_obj
+    _ = await db.bookings.insert_one(doc)
+    return booking_obj
 
-@api_router.get("/status", response_model=List[StatusCheck])
-async def get_status_checks():
-    # Exclude MongoDB's _id field from the query results
-    status_checks = await db.status_checks.find({}, {"_id": 0}).to_list(1000)
+@api_router.get("/bookings", response_model=List[Booking])
+async def get_bookings():
+    bookings = await db.bookings.find({}, {"_id": 0}).to_list(1000)
     
     # Convert ISO string timestamps back to datetime objects
-    for check in status_checks:
-        if isinstance(check['timestamp'], str):
-            check['timestamp'] = datetime.fromisoformat(check['timestamp'])
+    for booking in bookings:
+        if isinstance(booking['created_at'], str):
+            booking['created_at'] = datetime.fromisoformat(booking['created_at'])
     
-    return status_checks
+    return bookings
+
+@api_router.get("/bookings/{booking_id}", response_model=Booking)
+async def get_booking(booking_id: str):
+    booking = await db.bookings.find_one({"id": booking_id}, {"_id": 0})
+    
+    if not booking:
+        raise HTTPException(status_code=404, detail="Booking not found")
+    
+    if isinstance(booking['created_at'], str):
+        booking['created_at'] = datetime.fromisoformat(booking['created_at'])
+    
+    return booking
 
 # Include the router in the main app
 app.include_router(api_router)
