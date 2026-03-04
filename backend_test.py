@@ -3,7 +3,7 @@ import sys
 import json
 from datetime import datetime, timedelta
 
-class UrbanCutsAPITester:
+class EuclidesAPITester:
     def __init__(self, base_url="https://animated-website-3.preview.emergentagent.com/api"):
         self.base_url = base_url
         self.tests_run = 0
