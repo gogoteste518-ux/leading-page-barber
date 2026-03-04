@@ -20,16 +20,16 @@ module.exports = {
       colors: {
         border: "#333333",
         input: "#333333",
-        ring: "#ccff00",
-        background: "#050505",
+        ring: "#D4AF37",
+        background: "#000000",
         foreground: "#ffffff",
         primary: {
-          DEFAULT: "#ccff00",
+          DEFAULT: "#D4AF37",
           foreground: "#000000",
         },
         secondary: {
-          DEFAULT: "#ff0099",
-          foreground: "#ffffff",
+          DEFAULT: "#FFD700",
+          foreground: "#000000",
         },
         destructive: {
           DEFAULT: "hsl(0 84.2% 60.2%)",
@@ -40,8 +40,8 @@ module.exports = {
           foreground: "#a3a3a3",
         },
         accent: {
-          DEFAULT: "#00ffff",
-          foreground: "#000000",
+          DEFAULT: "#B8860B",
+          foreground: "#ffffff",
         },
         popover: {
           DEFAULT: "#0a0a0a",

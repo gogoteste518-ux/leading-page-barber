@@ -63,56 +63,56 @@ class Service(BaseModel):
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
-    return {"message": "Urban Cuts API"}
+    return {"message": "Euclides Cortes API"}
 
 @api_router.get("/services", response_model=List[Service])
 async def get_services():
     services = [
         {
             "id": "1",
-            "name": "FADE STREET",
-            "description": "Corte degradê moderno com finalização detalhada. Estilo urbano e clean.",
-            "price": "R$ 60",
-            "duration": "45 min",
+            "name": "CORTE CLÁSSICO",
+            "description": "Corte tradicional com acabamento perfeito e detalhes impecáveis.",
+            "price": "R$ 35",
+            "duration": "40 min",
             "icon": "scissors"
         },
         {
             "id": "2",
-            "name": "BARBA KING",
-            "description": "Barba alinhada com navalha quente e hidratação profunda.",
-            "price": "R$ 40",
+            "name": "BARBA PREMIUM",
+            "description": "Barba alinhada com navalha quente e hidratação profissional.",
+            "price": "R$ 35",
             "duration": "30 min",
             "icon": "razor"
         },
         {
             "id": "3",
-            "name": "COMBO VIP",
+            "name": "COMBO COMPLETO",
             "description": "Corte + Barba + Sobrancelha. Transformação completa.",
-            "price": "R$ 85",
-            "duration": "90 min",
+            "price": "R$ 40",
+            "duration": "80 min",
             "icon": "crown"
         },
         {
             "id": "4",
-            "name": "PLATINADO",
-            "description": "Descoloração profissional + tonalização. Estilo único.",
-            "price": "R$ 120",
-            "duration": "120 min",
+            "name": "DEGRADÊ MODERNO",
+            "description": "Degradê perfeito com transições suaves e estilo contemporâneo.",
+            "price": "R$ 38",
+            "duration": "45 min",
             "icon": "star"
         },
         {
             "id": "5",
-            "name": "RISCOS & ART",
-            "description": "Desenhos personalizados e riscos criativos no cabelo.",
-            "price": "R$ 30",
-            "duration": "20 min",
+            "name": "DESIGN PERSONALIZADO",
+            "description": "Desenhos exclusivos e riscos criativos no cabelo.",
+            "price": "R$ 40",
+            "duration": "30 min",
             "icon": "pen"
         },
         {
             "id": "6",
-            "name": "KIDS STYLE",
-            "description": "Corte especial para a garotada com muita paciência e estilo.",
-            "price": "R$ 45",
+            "name": "CORTE INFANTIL",
+            "description": "Corte especial para crianças com paciência e carinho.",
+            "price": "R$ 35",
             "duration": "30 min",
             "icon": "child"
         }
