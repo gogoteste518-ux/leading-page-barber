@@ -1,16 +1,19 @@
 import { motion } from 'framer-motion';
-import { Instagram, Facebook, Phone, Mail, MapPin } from 'lucide-react';
+import { Instagram, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
-  const socialLinks = [
-    { icon: Instagram, href: '#', label: 'Instagram', testId: 'footer-instagram' },
-    { icon: Facebook, href: '#', label: 'Facebook', testId: 'footer-facebook' },
-  ];
-
   const contactInfo = [
-    { icon: Phone, text: '(11) 99999-9999', testId: 'footer-phone' },
-    { icon: Mail, text: 'contato@euclidescortes.com', testId: 'footer-email' },
-    { icon: MapPin, text: 'Rua da Excelência, 123 - São Paulo', testId: 'footer-address' },
+    { 
+      icon: Phone, 
+      text: 'WhatsApp', 
+      link: 'https://wa.me/message/6KOQ62YOTL7MO1',
+      testId: 'footer-phone' 
+    },
+    { 
+      icon: MapPin, 
+      text: 'Rua papagaio, 200 - Centro', 
+      testId: 'footer-address' 
+    },
   ];
 
   return (
@@ -44,11 +47,19 @@ export default function Footer() {
             <div className="space-y-3">
               {contactInfo.map((item, index) => {
                 const Icon = item.icon;
+                const Component = item.link ? 'a' : 'div';
                 return (
-                  <div key={index} className="flex items-center gap-3 text-gray-400 hover:text-primary transition-colors" data-testid={item.testId}>
+                  <Component
+                    key={index}
+                    href={item.link}
+                    target={item.link ? "_blank" : undefined}
+                    rel={item.link ? "noopener noreferrer" : undefined}
+                    className="flex items-center gap-3 text-gray-400 hover:text-primary transition-colors cursor-pointer"
+                    data-testid={item.testId}
+                  >
                     <Icon className="w-5 h-5" />
                     <span className="font-body">{item.text}</span>
-                  </div>
+                  </Component>
                 );
               })}
             </div>
@@ -63,22 +74,18 @@ export default function Footer() {
           >
             <h4 className="text-xl font-heading uppercase text-foreground mb-4">REDES SOCIAIS</h4>
             <div className="flex gap-4 mb-6">
-              {socialLinks.map((social, index) => {
-                const Icon = social.icon;
-                return (
-                  <motion.a
-                    key={index}
-                    href={social.href}
-                    data-testid={social.testId}
-                    whileHover={{ scale: 1.1, y: -3 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-12 h-12 bg-muted border border-border hover:border-primary flex items-center justify-center transition-colors group"
-                    aria-label={social.label}
-                  >
-                    <Icon className="w-6 h-6 text-gray-400 group-hover:text-primary transition-colors" />
-                  </motion.a>
-                );
-              })}
+              <motion.a
+                href="https://www.instagram.com/euclidess_cortes/"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="footer-instagram"
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-12 h-12 bg-muted border border-border hover:border-primary flex items-center justify-center transition-colors group"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-6 h-6 text-gray-400 group-hover:text-primary transition-colors" />
+              </motion.a>
             </div>
             <div className="text-gray-400 font-body space-y-1">
               <p className="font-bold text-foreground">HORÁRIO</p>

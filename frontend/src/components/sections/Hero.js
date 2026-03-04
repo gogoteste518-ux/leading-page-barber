@@ -74,7 +74,7 @@ export default function Hero() {
             onClick={scrollToBooking}
             className="bg-primary text-black font-bold uppercase tracking-wider hover:bg-secondary hover:scale-105 transition-all duration-300 px-8 py-4 text-lg shadow-lg shadow-primary/20"
           >
-            AGENDAR HORÁRIO
+            AGENDAR VIA WHATSAPP
           </button>
           <button
             data-testid="hero-services-btn"
