@@ -21,16 +21,8 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-      {/* Background texture */}
-      <div 
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: 'url(https://www.transparenttextures.com/patterns/stardust.png)'
-        }}
-      />
-      
       {/* 3D Scene */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0 opacity-20">
         <Suspense fallback={null}>
           <Scene3D />
         </Suspense>
@@ -46,12 +38,12 @@ export default function Hero() {
           <motion.h1 
             className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-heading uppercase tracking-tighter leading-[0.9] mb-6"
             style={{
-              textShadow: '0 0 30px rgba(204, 255, 0, 0.5)'
+              textShadow: '0 0 40px rgba(212, 175, 55, 0.5)'
             }}
           >
-            <span className="text-foreground">URBAN</span>
+            <span className="text-foreground">EUCLIDES</span>
             <br />
-            <span className="text-primary">CUTS</span>
+            <span className="text-primary">CORTES</span>
           </motion.h1>
         </motion.div>
 
@@ -61,7 +53,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          ESTILO STREET • CORTES MODERNOS • VIBE URBANA
+          EXCELÊNCIA • PRECISÃO • ESTILO IMPECÁVEL
         </motion.p>
 
         <motion.div
@@ -73,16 +65,16 @@ export default function Hero() {
           <button
             data-testid="hero-booking-btn"
             onClick={scrollToBooking}
-            className="bg-primary text-black font-bold uppercase tracking-wider hover:bg-white hover:scale-105 transition-all duration-300 px-8 py-4 text-lg"
+            className="bg-primary text-black font-bold uppercase tracking-wider hover:bg-secondary hover:scale-105 transition-all duration-300 px-8 py-4 text-lg"
           >
-            AGENDAR AGORA
+            AGENDAR HORÁRIO
           </button>
           <button
             data-testid="hero-services-btn"
             onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-            className="border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black hover:scale-105 transition-all duration-300 px-8 py-4 text-lg"
+            className="border-2 border-primary text-primary font-bold uppercase tracking-wider hover:bg-primary hover:text-black hover:scale-105 transition-all duration-300 px-8 py-4 text-lg"
           >
-            VER SERVIÇOS
+            NOSSOS SERVIÇOS
           </button>
         </motion.div>
 

@@ -19,12 +19,12 @@ export default function Booking() {
   const [loading, setLoading] = useState(false);
 
   const services = [
-    'FADE STREET',
-    'BARBA KING',
-    'COMBO VIP',
-    'PLATINADO',
-    'RISCOS & ART',
-    'KIDS STYLE'
+    'CORTE CLÁSSICO',
+    'BARBA PREMIUM',
+    'COMBO COMPLETO',
+    'DEGRADÊ MODERNO',
+    'DESIGN PERSONALIZADO',
+    'CORTE INFANTIL'
   ];
 
   const timeSlots = [
@@ -92,7 +92,7 @@ export default function Booking() {
             <span className="text-primary ml-4">HORÁRIO</span>
           </h2>
           <p className="text-lg text-gray-400 font-body">
-            Transforme seu visual agora mesmo
+            Reserve seu horário com excelência
           </p>
         </motion.div>
 
@@ -237,7 +237,7 @@ export default function Booking() {
               disabled={loading}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full bg-primary text-black font-bold uppercase tracking-wider hover:bg-white transition-colors duration-300 px-8 py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-primary text-black font-bold uppercase tracking-wider hover:bg-secondary transition-colors duration-300 px-8 py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'AGENDANDO...' : 'CONFIRMAR AGENDAMENTO'}
             </motion.button>
