@@ -131,7 +131,7 @@ class EuclidesAPITester:
             "name": "João Silva",
             "email": "joao@test.com",
             "phone": "(11) 99999-9999",
-            "service": "FADE STREET",
+            "service": "CORTE CLÁSSICO",
             "date": future_date,
             "time": "14:00",
             "notes": "Teste automatizado"
