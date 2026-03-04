@@ -2,17 +2,17 @@ import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 
 export default function Chair3D({ position = [0, 0, 0] }) {
-  const group = useRef();
+  const groupRef = useRef();
 
   useFrame((state) => {
-    if (group.current) {
-      group.current.rotation.y = state.clock.elapsedTime * 0.3;
-      group.current.position.y = position[1] + Math.sin(state.clock.elapsedTime) * 0.1;
+    if (groupRef.current) {
+      groupRef.current.rotation.y = state.clock.elapsedTime * 0.3;
+      groupRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime) * 0.1;
     }
   });
 
   return (
-    <group ref={group} position={position}>
+    <group ref={groupRef} position={position}>
       {/* Seat */}
       <mesh position={[0, 0, 0]}>
         <cylinderGeometry args={[0.6, 0.6, 0.15, 32]} />
@@ -27,22 +27,20 @@ export default function Chair3D({ position = [0, 0, 0] }) {
       <mesh position={[0, -0.5, 0]}>
         <cylinderGeometry args={[0.3, 0.5, 0.6, 32]} />
         <meshStandardMaterial 
-          color="#00ffff" 
+          color="#B8860B" 
           metalness={0.8} 
           roughness={0.2}
-          emissive="#00ffff"
-          emissiveIntensity={0.2}
+          emissive="#B8860B"
+          emissiveIntensity={0.15}
         />
       </mesh>
       {/* Pole */}
       <mesh position={[0, -0.2, 0]}>
         <cylinderGeometry args={[0.1, 0.1, 0.4, 16]} />
         <meshStandardMaterial 
-          color="#00ffff" 
-          metalness={0.8} 
-          roughness={0.2}
-          emissive="#00ffff"
-          emissiveIntensity={0.2}
+          color="#D4AF37" 
+          metalness={0.9} 
+          roughness={0.1}
         />
       </mesh>
     </group>
