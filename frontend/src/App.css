@@ -1,34 +1,57 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+.App {
+  min-height: 100vh;
+  background-color: #050505;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Custom cursor effect */
+@media (min-width: 768px) {
+  * {
+    cursor: default;
+  }
+
+  a, button, input, select, textarea {
+    cursor: pointer;
+  }
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Text reveal animations */
+.text-reveal {
+  overflow: hidden;
 }
 
-.App-link {
-    color: #61dafb;
+.text-reveal-inner {
+  display: inline-block;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Glitch effect for headings */
+@keyframes glitch {
+  0% {
+    text-shadow: 2px 2px #ccff00, -2px -2px #ff0099;
+  }
+  25% {
+    text-shadow: -2px 2px #ff0099, 2px -2px #00ffff;
+  }
+  50% {
+    text-shadow: 2px -2px #00ffff, -2px 2px #ccff00;
+  }
+  75% {
+    text-shadow: -2px -2px #ccff00, 2px 2px #ff0099;
+  }
+  100% {
+    text-shadow: 2px 2px #ccff00, -2px -2px #ff0099;
+  }
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
