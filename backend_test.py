@@ -81,7 +81,7 @@ class EuclidesAPITester:
             "GET",
             "",
             200,
-            expected_content={"message": "Urban Cuts API"}
+            expected_content={"message": "Euclides Cortes API"}
         )
 
     def test_get_services(self):
