@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion';
-import { Suspense } from 'react';
-import Scene3D from '../3d/Scene3D';
 
 export default function Hero() {
   const textVariants = {
@@ -16,16 +14,25 @@ export default function Hero() {
   };
 
   const scrollToBooking = () => {
-    document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById('booking');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToServices = () => {
+    const element = document.getElementById('services');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-      {/* 3D Scene */}
-      <div className="absolute inset-0 opacity-20">
-        <Suspense fallback={null}>
-          <Scene3D />
-        </Suspense>
+      {/* Animated background pattern */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
       </div>
 
       {/* Content */}
@@ -38,7 +45,7 @@ export default function Hero() {
           <motion.h1 
             className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-heading uppercase tracking-tighter leading-[0.9] mb-6"
             style={{
-              textShadow: '0 0 40px rgba(212, 175, 55, 0.5)'
+              textShadow: '0 0 40px rgba(212, 175, 55, 0.5), 0 0 80px rgba(212, 175, 55, 0.2)'
             }}
           >
             <span className="text-foreground">EUCLIDES</span>
@@ -65,13 +72,13 @@ export default function Hero() {
           <button
             data-testid="hero-booking-btn"
             onClick={scrollToBooking}
-            className="bg-primary text-black font-bold uppercase tracking-wider hover:bg-secondary hover:scale-105 transition-all duration-300 px-8 py-4 text-lg"
+            className="bg-primary text-black font-bold uppercase tracking-wider hover:bg-secondary hover:scale-105 transition-all duration-300 px-8 py-4 text-lg shadow-lg shadow-primary/20"
           >
             AGENDAR HORÁRIO
           </button>
           <button
             data-testid="hero-services-btn"
-            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={scrollToServices}
             className="border-2 border-primary text-primary font-bold uppercase tracking-wider hover:bg-primary hover:text-black hover:scale-105 transition-all duration-300 px-8 py-4 text-lg"
           >
             NOSSOS SERVIÇOS

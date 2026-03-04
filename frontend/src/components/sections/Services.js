@@ -18,6 +18,7 @@ const iconMap = {
 export default function Services() {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchServices();
@@ -27,8 +28,10 @@ export default function Services() {
     try {
       const response = await axios.get(`${API}/services`);
       setServices(response.data);
+      setError(null);
     } catch (error) {
       console.error('Error fetching services:', error);
+      setError('Erro ao carregar serviços');
     } finally {
       setLoading(false);
     }
@@ -56,11 +59,28 @@ export default function Services() {
     }
   };
 
+  const scrollToBooking = () => {
+    const element = document.getElementById('booking');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   if (loading) {
     return (
       <section id="services" className="py-20 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-primary">Carregando serviços...</div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section id="services" className="py-20 md:py-32 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center text-red-500">{error}</div>
         </div>
       </section>
     );
@@ -85,7 +105,7 @@ export default function Services() {
             <span className="text-primary ml-4">SERVIÇOS</span>
           </h2>
           <p className="text-lg text-gray-400 font-body max-w-2xl mx-auto">
-            Transformação completa com os melhores profissionais da cidade
+            Transformação completa com os melhores profissionais
           </p>
         </motion.div>
 
@@ -130,9 +150,7 @@ export default function Services() {
 
                   <button
                     data-testid={`book-service-${service.id}`}
-                    onClick={() => {
-                      document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
+                    onClick={scrollToBooking}
                     className="text-primary font-bold uppercase text-sm tracking-wider hover:text-white transition-colors flex items-center gap-2 group/btn"
                   >
                     AGENDAR
