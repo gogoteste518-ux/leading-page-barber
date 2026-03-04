@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { MeshStandardMaterial } from 'three';
 
 export default function Chair3D({ position = [0, 0, 0] }) {
   const group = useRef();
@@ -10,14 +9,6 @@ export default function Chair3D({ position = [0, 0, 0] }) {
       group.current.rotation.y = state.clock.elapsedTime * 0.3;
       group.current.position.y = position[1] + Math.sin(state.clock.elapsedTime) * 0.1;
     }
-  });
-
-  const cyanMaterial = new MeshStandardMaterial({
-    color: '#00ffff',
-    metalness: 0.8,
-    roughness: 0.2,
-    emissive: '#00ffff',
-    emissiveIntensity: 0.2,
   });
 
   return (
@@ -35,12 +26,24 @@ export default function Chair3D({ position = [0, 0, 0] }) {
       {/* Base */}
       <mesh position={[0, -0.5, 0]}>
         <cylinderGeometry args={[0.3, 0.5, 0.6, 32]} />
-        <primitive object={cyanMaterial} attach="material" />
+        <meshStandardMaterial 
+          color="#00ffff" 
+          metalness={0.8} 
+          roughness={0.2}
+          emissive="#00ffff"
+          emissiveIntensity={0.2}
+        />
       </mesh>
       {/* Pole */}
       <mesh position={[0, -0.2, 0]}>
         <cylinderGeometry args={[0.1, 0.1, 0.4, 16]} />
-        <primitive object={cyanMaterial} attach="material" />
+        <meshStandardMaterial 
+          color="#00ffff" 
+          metalness={0.8} 
+          roughness={0.2}
+          emissive="#00ffff"
+          emissiveIntensity={0.2}
+        />
       </mesh>
     </group>
   );
