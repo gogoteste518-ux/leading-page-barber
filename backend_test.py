@@ -95,7 +95,7 @@ class EuclidesAPITester:
         
         if success:
             # Validate we have 6 services with expected names
-            expected_services = ["FADE STREET", "BARBA KING", "COMBO VIP", "PLATINADO", "RISCOS & ART", "KIDS STYLE"]
+            expected_services = ["CORTE CLÁSSICO", "BARBA PREMIUM", "COMBO COMPLETO", "DEGRADÊ MODERNO", "DESIGN PERSONALIZADO", "CORTE INFANTIL"]
             
             if len(response) == 6:
                 print(f"✅ Correct number of services: {len(response)}")
