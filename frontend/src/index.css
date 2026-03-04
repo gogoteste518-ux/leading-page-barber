@@ -17,14 +17,14 @@ body {
   font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #050505;
+  background-color: #000000;
   color: #ffffff;
   overflow-x: hidden;
 }
 
 @layer base {
   :root {
-    --background: #050505;
+    --background: #000000;
     --foreground: #ffffff;
   }
 }
@@ -35,26 +35,26 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ccff00;
+  background: #D4AF37;
   border-radius: 0px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffffff;
+  background: #FFD700;
 }
 
 /* Selection */
 ::selection {
-  background-color: #ccff00;
+  background-color: #D4AF37;
   color: #000000;
 }
 
 ::-moz-selection {
-  background-color: #ccff00;
+  background-color: #D4AF37;
   color: #000000;
 }
 

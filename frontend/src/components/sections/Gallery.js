@@ -10,12 +10,6 @@ const galleryImages = [
 export default function Gallery() {
   return (
     <section className="py-20 md:py-32 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5" 
-        style={{
-          backgroundImage: 'url(https://www.transparenttextures.com/patterns/stardust.png)'
-        }}
-      />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -26,10 +20,10 @@ export default function Gallery() {
         >
           <h2 className="text-4xl md:text-6xl font-heading uppercase tracking-tight mb-4 text-foreground">
             NOSSOS
-            <span className="text-secondary ml-4">TRABALHOS</span>
+            <span className="text-primary ml-4">TRABALHOS</span>
           </h2>
           <p className="text-lg text-gray-400 font-body">
-            Cada corte é uma obra de arte
+            Cada corte reflete nossa dedicação e excelência
           </p>
         </motion.div>
 
@@ -51,7 +45,7 @@ export default function Gallery() {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
-                <span className="text-primary font-heading text-2xl uppercase">URBAN CUTS</span>
+                <span className="text-primary font-heading text-2xl uppercase">EUCLIDES CORTES</span>
               </div>
               {/* Border accent */}
               <div className="absolute inset-0 border-4 border-transparent group-hover:border-primary transition-colors duration-300" />

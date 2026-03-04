@@ -9,8 +9,8 @@ export default function Footer() {
 
   const contactInfo = [
     { icon: Phone, text: '(11) 99999-9999', testId: 'footer-phone' },
-    { icon: Mail, text: 'contato@urbancuts.com', testId: 'footer-email' },
-    { icon: MapPin, text: 'Rua do Estilo, 123 - São Paulo', testId: 'footer-address' },
+    { icon: Mail, text: 'contato@euclidescortes.com', testId: 'footer-email' },
+    { icon: MapPin, text: 'Rua da Excelência, 123 - São Paulo', testId: 'footer-address' },
   ];
 
   return (
@@ -27,9 +27,9 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-4xl font-heading uppercase text-primary mb-4">URBAN CUTS</h3>
+            <h3 className="text-4xl font-heading uppercase text-primary mb-4">EUCLIDES CORTES</h3>
             <p className="text-gray-400 font-body leading-relaxed">
-              Estilo urbano, cortes modernos e atendimento de qualidade. Transforme seu visual com a gente.
+              Excelência em cortes, precisão e atendimento de qualidade. Seu estilo é nossa missão.
             </p>
           </motion.div>
 
@@ -97,8 +97,8 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-12 pt-8 border-t border-border text-center text-gray-500 font-body"
         >
-          <p>© 2024 Urban Cuts. Todos os direitos reservados.</p>
-          <p className="mt-2 text-sm">Desenvolvido com estilo e atitude</p>
+          <p>© 2024 Euclides Cortes. Todos os direitos reservados.</p>
+          <p className="mt-2 text-sm">Excelência e profissionalismo em cada corte</p>
         </motion.div>
       </div>
     </footer>
