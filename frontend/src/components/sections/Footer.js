@@ -6,7 +6,7 @@ export default function Footer() {
     { 
       icon: Phone, 
       text: 'WhatsApp', 
-      link: 'https://wa.me/message/6KOQ62YOTL7MO1',
+      link: 'https://api.whatsapp.com/send?phone=556KOQ62YOTL7MO1',
       testId: 'footer-phone' 
     },
     { 
