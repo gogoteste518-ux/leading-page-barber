@@ -3,7 +3,7 @@ import { MessageCircle } from 'lucide-react';
 
 export default function Booking() {
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/message/6KOQ62YOTL7MO1', '_blank');
+    window.open('https://api.whatsapp.com/send?phone=556KOQ62YOTL7MO1', '_blank');
   };
 
   return (
